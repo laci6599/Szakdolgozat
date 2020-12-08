@@ -1,0 +1,48 @@
+\Chapter{Fejlesztõi dokumentáció}
+\label{Chap:dokumen}
+
+Ebben a fejezetben ismertetni fogom a fejleszteni kívánt rendszer tervezését, architekrúrális tervét. A rendszer elkészítése szakért?k tapasztalatai alapján és segítségével történik.
+
+\Section{Koncepció} \emph{}\\
+\newline
+A webfejlesztésben egy nélkülözhetetlen gyors fejlesztést segít? megoldás a cms. azonban a legismertebb piacon lév? megoldásoknál a hagyományos szoftverarchitektúrájú rendszerek vannak.A web-es területen azonban mára már szinte egyeduralkodóvá kezd válni az új fejlesztések területén a Front-end és back-end kettéválasztása.
+A back-end esetében pedig lehet?ség nyílt, egy sokkal inkább sokoldalúbb modulárisabb fejlesztésre. Konkrét példával élve ha veszünk egy Drupal, Liferay, esetében egy webserverre van telepítve egy szolgáltatás. Az nyújtja az oldalak, tartalmak kezelését. Azonban a back-end esetében az architektúrára jellemz?en vagy csak java vagy csak php-s b?vítési lehet?ség van.\\
+\newline
+Milyen új CMS architektúra dolgozható ki? Ha a fenn említett szempontokat figyelembe vesszük, akkor erre egy olyan microservice alapú megoldás adhat választ, ami könnyen telepíthet?, b?vítésre nyitott, módosításra zárt. Interface alapú megoldások. Jelen esetben az interfacenek a REST-es végpontokat is tekinthetjük. \\
+\newline
+A dolgozatban egy tartalom kezel? kerül kidolgozásra. A tartalomkezel? microservicek összessége, ami a hagyományos CMS-esek esetében egy adott oldal html tartalmát határozza meg, maximum néhány makró kifejezéssel. \\
+\noindent Fontosabb funkciók:
+\vskip 1.0cm
+\begin{itemize}
+	
+	\item Lehessen verziózni a tartalmakat (pl.: jogi nyilatkozat oldalát)
+	
+	\item Legyen staging mód (piszkozat kezelés, illetve élesítés el?tt lehessen látni a leend? eredményt)
+	
+	\item Multi platformos (desktop, mobilos verziók kezelése)
+	
+	\item Makrók használati lehet?ségének biztosítása (b?vítésre nyitott, módosításra zárt elv)
+	
+	\item Egyedi kontextus kezel?nek integrálhatósága (egy makró milyen adatokból dolgozhat. Rendszerhez igazított session kezelés)
+	
+\end{itemize}
+
+Makrók, templatek el?nyei:
+Vannak esetek, mikor a tartalom nagy százalékban statikus, azonban vannak bizonyos elemei, akár a felhasználó neve, adott év, stb. Ezeket ne kelljen mindig
+módosítgatni, ezért valamilyen template leíróval kezelhet?. Azonban a tervezés során nem szeretnénk egy nyelvre korlátozni, sokkal inkább szabadon igényeknek
+megfelel?en b?víthet?vé tervezni. ehhez kapcsolódik szorosan a kontextus kezel? amelyet a templatel összekapcsolva fog el?állni a tényleges tartalom. \\
+\newline
+
+\Section{A Microservicekr?l általában} \emph{}\\
+\newline
+
+\Section{Programspecifikáció} \emph{}\\
+\newline
+\begin{figure} [ht]
+	\centering
+	\includegraphics[scale=0.5]{kepek/microservices.jpg}
+\end{figure}
+\begin{figure} [ht]
+	\centering
+	\includegraphics[scale=0.45]{kepek/structure.jpg}
+\end{figure}
