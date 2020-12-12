@@ -17,11 +17,12 @@ Reallocating 'name_of_file' (item size: 1) to 33 items.
 A level-1 auxiliary file: irodalomjegyzek/irod_jegyzek.aux
 Reallocating 'name_of_file' (item size: 1) to 24 items.
 A level-1 auxiliary file: hasznalat/hasznalat.aux
+I found no \citation commands---while reading file szakd_minta_report.aux
 I found no \bibdata command---while reading file szakd_minta_report.aux
 I found no \bibstyle command---while reading file szakd_minta_report.aux
-You've used 1 entry,
+You've used 0 entries,
             0 wiz_defined-function locations,
-            93 strings with 724 characters,
+            91 strings with 714 characters,
 and the built_in function-call counts, 0 in all, are:
 = -- 0
 > -- 0
@@ -60,4 +61,4 @@ warning$ -- 0
 while$ -- 0
 width$ -- 0
 write$ -- 0
-(There were 2 error messages)
+(There were 3 error messages)

@@ -11,12 +11,11 @@
 \select@language {magyar} \contentsline {section}{\numberline {2.7}Java alap\'u CMS-ek}{14}{}%
 \select@language {magyar} \contentsline {subsection}{\numberline {2.7.1}Hozz\'atartoz\'o defin\IeC {\'\i }ci\'ok}{14}{}%
 \select@language {magyar} \contentsline {subsection}{\numberline {2.7.2}Ny\IeC {\'\i }lt forr\'ask\'od\'u Java port\'alok}{14}{}%
-\select@language {magyar} \contentsline {subsection}{\numberline {2.7.3}A Liferay bemutat\'asa}{14}{}%
-\select@language {magyar} \contentsline {section}{\numberline {2.8}A CMS-ek inform\'aci\'obiztons\'agi k\'erd\'esei}{14}{}%
-\select@language {magyar} \contentsline {chapter}{\numberline {3}Fejleszt\H oi dokument\'aci\'o}{15}{}%
-\select@language {magyar} \contentsline {section}{\numberline {3.1}Koncepci\'o}{15}{}%
-\select@language {magyar} \contentsline {section}{\numberline {3.2}A Microservicekr?l \'altal\'aban}{16}{}%
-\select@language {magyar} \contentsline {section}{\numberline {3.3}Programspecifik\'aci\'o}{16}{}%
-\select@language {magyar} \contentsline {chapter}{\numberline {4}\"Osszefoglal\'as}{18}{}%
-\select@language {magyar} \contentsline {chapter}{Irodalomjegyz\'ek}{19}{}%
-\select@language {magyar} \contentsline {chapter}{Adathordoz\'o haszn\'alati \'utmutat\'o}{20}{}%
+\select@language {magyar} \contentsline {subsection}{\numberline {2.7.3}A Liferay bemutat\'asa}{15}{}%
+\select@language {magyar} \contentsline {section}{\numberline {2.8}A CMS-ek inform\'aci\'obiztons\'agi k\'erd\'esei}{15}{}%
+\select@language {magyar} \contentsline {chapter}{\numberline {3}Fejleszt\H {o}i dokument\'aci\'o}{17}{}%
+\select@language {magyar} \contentsline {section}{\numberline {3.1}Koncepci\'o}{17}{}%
+\select@language {magyar} \contentsline {section}{\numberline {3.2}A Microservicekr\H {o}l \'altal\'aban}{18}{}%
+\select@language {magyar} \contentsline {section}{\numberline {3.3}Programspecifik\'aci\'o}{19}{}%
+\select@language {magyar} \contentsline {chapter}{\numberline {4}\"Osszefoglal\'as}{22}{}%
+\select@language {magyar} \contentsline {chapter}{Adathordoz\'o haszn\'alati \'utmutat\'o}{24}{}%

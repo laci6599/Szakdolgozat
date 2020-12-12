@@ -1,48 +1,97 @@
-\Chapter{Fejlesztõi dokumentáció}
+\Chapter{Fejleszt\H{o}i dokumentáció}
 \label{Chap:dokumen}
 
-Ebben a fejezetben ismertetni fogom a fejleszteni kívánt rendszer tervezését, architekrúrális tervét. A rendszer elkészítése szakért?k tapasztalatai alapján és segítségével történik.
+Ebben a fejezetben ismertetni fogom a fejleszteni kívánt rendszer tervezését, architekrúrális tervét. A rendszer elkészítése szakért\H{o}k tapasztalatai alapján és segítségével történik.
 
 \Section{Koncepció} \emph{}\\
 \newline
-A webfejlesztésben egy nélkülözhetetlen gyors fejlesztést segít? megoldás a cms. azonban a legismertebb piacon lév? megoldásoknál a hagyományos szoftverarchitektúrájú rendszerek vannak.A web-es területen azonban mára már szinte egyeduralkodóvá kezd válni az új fejlesztések területén a Front-end és back-end kettéválasztása.
-A back-end esetében pedig lehet?ség nyílt, egy sokkal inkább sokoldalúbb modulárisabb fejlesztésre. Konkrét példával élve ha veszünk egy Drupal, Liferay, esetében egy webserverre van telepítve egy szolgáltatás. Az nyújtja az oldalak, tartalmak kezelését. Azonban a back-end esetében az architektúrára jellemz?en vagy csak java vagy csak php-s b?vítési lehet?ség van.\\
+A webfejlesztésben egy nélkülözhetetlen gyors fejlesztést segít\H{o} megoldás a CMS. A legismertebb piacon lév\H{o} megoldásoknál a hagyományos szoftverarchitektúrájú rendszerek vannak, a web-es területen azonban mára már szinte egyeduralkodóvá kezd válni az új fejlesztések területén a front-end és back-end kettéválasztása. \\
 \newline
-Milyen új CMS architektúra dolgozható ki? Ha a fenn említett szempontokat figyelembe vesszük, akkor erre egy olyan microservice alapú megoldás adhat választ, ami könnyen telepíthet?, b?vítésre nyitott, módosításra zárt. Interface alapú megoldások. Jelen esetben az interfacenek a REST-es végpontokat is tekinthetjük. \\
+A back-end esetében pedig lehet\H{o}ség nyílt, egy sokkal inkább sokoldalúbb, modulárisabb fejlesztésre. Konkrét példával élve ha veszünk egy Drupal, Liferay esetében egy webszerverre van telepítve egy szolgáltatás. Az nyújtja az oldalak, tartalmak kezelését. Azonban a back-end esetében az architektúrára jellemz\H{o}en vagy csak java, vagy csak php-s b\H{o}vítési lehet\H{o}ség van.\\
 \newline
-A dolgozatban egy tartalom kezel? kerül kidolgozásra. A tartalomkezel? microservicek összessége, ami a hagyományos CMS-esek esetében egy adott oldal html tartalmát határozza meg, maximum néhány makró kifejezéssel. \\
+Milyen új CMS architektúra dolgozható ki? Ha a fenn említett szempontokat figyelembe vesszük, akkor erre egy olyan microservice alapú megoldás adhat választ, ami könnyen telepíthet\H{o}, b\H{o}vítésre nyitott, módosításra zárt. Interface alapú megoldások. Jelen esetben az interfacenek a REST-es végpontokat is tekinthetjük. \\
+\newline
+A dolgozatban egy tartalomkezel\H{o} kerül kidolgozásra. A tartalomkezel\H{o} microservicek összessége, ami a hagyományos CMS-esek esetében egy adott oldal html tartalmát határozza meg, maximum néhány makró kifejezéssel. \\
 \noindent Fontosabb funkciók:
 \vskip 1.0cm
 \begin{itemize}
 	
 	\item Lehessen verziózni a tartalmakat (pl.: jogi nyilatkozat oldalát)
 	
-	\item Legyen staging mód (piszkozat kezelés, illetve élesítés el?tt lehessen látni a leend? eredményt)
+	\item Legyen staging mód (piszkozat kezelés, illetve élesítés el\H{o}tt lehessen látni a leend\H{o} eredményt)
 	
 	\item Multi platformos (desktop, mobilos verziók kezelése)
 	
-	\item Makrók használati lehet?ségének biztosítása (b?vítésre nyitott, módosításra zárt elv)
+	\item Makrók használati lehet\H{o}ségének biztosítása (b\H{o}vítésre nyitott, módosításra zárt elv)
 	
-	\item Egyedi kontextus kezel?nek integrálhatósága (egy makró milyen adatokból dolgozhat. Rendszerhez igazított session kezelés)
+	\item Egyedi kontextuskezel\H{o}nek integrálhatósága (egy makró milyen adatokból dolgozhat, rendszerhez igazított session kezelés)
 	
 \end{itemize}
 
-Makrók, templatek el?nyei:
+\noindent\textbf{\underline{Makrók, templatek el\H{o}nyei:}} \\
+\newline
 Vannak esetek, mikor a tartalom nagy százalékban statikus, azonban vannak bizonyos elemei, akár a felhasználó neve, adott év, stb. Ezeket ne kelljen mindig
-módosítgatni, ezért valamilyen template leíróval kezelhet?. Azonban a tervezés során nem szeretnénk egy nyelvre korlátozni, sokkal inkább szabadon igényeknek
-megfelel?en b?víthet?vé tervezni. ehhez kapcsolódik szorosan a kontextus kezel? amelyet a templatel összekapcsolva fog el?állni a tényleges tartalom. \\
+módosítgatni, ezért valamilyen template leíróval kezelhet\H{o}. Azonban a tervezés során nem szeretnénk egy nyelvre korlátozni, sokkal inkább szabadon igényeknek megfelel\H{o}en b\H{o}víthet\H{o}vé tervezni. Ehhez kapcsolódik szorosan a kontextuskezel\H{o} amelyet a templatel összekapcsolva fog el\H{o}állni a tényleges tartalom. \\
 \newline
 
-\Section{A Microservicekr?l általában} \emph{}\\
+\Section{A Microservicekr\H{o}l általában} \emph{} [8]\\
 \newline
-
+\begin{figure} [ht]
+	\centering
+	\includegraphics[scale=1]{kepek/microservice.jpg}
+\end{figure}
+A microservicek nagyon hasonlóak egy API-hoz, amit egy backend szerver szolgáltat. Microservice architektúrában számos ilyen backend szervert sok kisebb önálló részre osztunk fel. Fentebb láthatunk egy ilyen megvalósítást egy CMS rendszer példáján. Mindegyik szerver egy microservicet nyújt, amik egy bizonyos feladatot végeznek el. \\
+\newline
+A microservice architektúra legf\H{o}bb jellemz\H{o}je a szolgáltatások modularizációja és a szoftverek felosztása kisebb, egymástól független komponensekre. \\
+\newline
+Ez a fajta technológia megoldást nyújt arra, hogy a nagy, komplex rendszereket felosszuk sokkal kisebb komponensekre, amik API útján kommunikálnak egymással, ezáltal sokkal jobban menedzselhet\H{o} a rendszerünk. Ezzel a módszerrel egy sokkal rugalmasabb és könnyebben b\H{o}víthet\H{o} rendszert tudunk elérni. Ha egy microservice meghibásodik, nem kell az egész szoftvert frissítenünk, elég csak a microservicet kicserélni, javítani. A program csak egy kis, önálló részét kell frissíteni. \\
+\newline
+További el\H{o}nye, hogy nem vagyunk rákényszerítve az egész rendszeren belül egy programnyelv használatára. Mivel a microservice komponensek API útján kommunikálnak, így a Microserviceket megírhatjuk akár más-más programnyelveken is, a m\H{u}ködésükben ez nem zavarja \H{o}ket. Tehát programnyelv függetlenné teszi a komponenseket. Bármilyen technológiát használhatunk az egyes microservicek implementálásához. Ezáltal egy sokkal gyorsabb fejlesztést is el tudunk érni, mivel ezek a komponensek függetlenek egymástól, tehát egy fejleszt\H{o}csapat akár feloszthatja ezeket és dolgozhatnak a rendszer egységein külön-külön is.  Ráadásul így egy sokkal jobban rendszerezettebb, átláthatóbb és megérthet\H{o}bb rendszert kapunk. 
 \Section{Programspecifikáció} \emph{}\\
 \newline
 \begin{figure} [ht]
 	\centering
 	\includegraphics[scale=0.5]{kepek/microservices.jpg}
-\end{figure}
-\begin{figure} [ht]
-	\centering
+	\vskip 0.5cm
 	\includegraphics[scale=0.45]{kepek/structure.jpg}
 \end{figure}
+
+\noindent\textbf{{Az ábra ismertetése:}} \\
+\newline
+\textbf{\underline{Content modul}} \\
+\newline
+Ennek a cms modulnak a feladata tárolni és kezelni a különböz\H{o} tartalmakat. Ebbe beleérthet\H{o}ek statikus tartalmak, amelyek például egy portál nyitó oldala vagy akár egy cikk szerkeszt? is, amely komplexebb dinamikus tartalmakat is tartalmazhat. Cél, hogy verziózni lehessen a tartalmat, több állapotot is tudjon kezelni (pl.: production, staging). \\
+\newline
+\textbf{Microservicek} \\
+\newline
+\textbf{\underline{Content business service}} \\
+\newline
+Ez a service adja a modul egyik API-ját. Ezen keresztül érhet\H{o}ek el a tartalmak. Mind a generált, mind a statikus tartalmak. A tartalom hozzáadása, módosítása is ezen keresztül történik. Feladat az ábra szerint is, a modulhoz tartozó további servicek közötti közvetítés. \\
+\newline
+Els\H{o} lépésként, megnézni, hogy az adott azonosítóhoz milyen alap adatok tartoznak, ami alapján validációkat, illetve a válasz modell alapján létre lehet hozni. Azonban a microservicek el\H{o}nyét kihasználva, ezzel párhuzamosan kiküldésre kerül a tartalom felé is a kérés, hogy az adott azonosítóhoz határozza meg a kívánt tartalmat. Ezek megérkezése után, megvizsgálásra kerül, hogy statikus tartalomként azonnal kiszolgálható-e a válasz, vagy dinamikusként template service felé irányítandó a feldolgozás további folyamata. A template enginek válasza után pedig a végs? modell összeállása utána megkapjuk a teljes választ. \\
+\newline
+\textbf{\underline{Content base data}} \\
+\newline
+Ez a microservice határozza meg a legelemibb adatokat. A tartalomhoz tartozó metainformációk ebben lesznek tárolva (pl. név, leírás, stb). Itt lesz tárolva az adott tartalom azonosító, amelynek segítségével lehet rá hivatkozni. Illetve a feldolgozáshoz szükséges adatokat is tartalmazza. Például a kés\H{o}bbi microservice leírásban definiált content template enginehez szükséges adatok. \\
+\newline
+\textbf{\underline{Content versions}} \\
+\newline
+Az adott azonosítóhoz tartalmazó tényleges adatot reprezentálja. Tárolás szempontjából a kódokhoz használatos verzió kezel\H{o}t alapul véve minden alkalommal az el\H{o}z\H{o} verzióhoz képesti különbséget (deltát) tárolja el. Így a lehet\H{o}séghez mérten kisebb fizikai tárhelyet foglal, mintha minden alkalommal a teljes tartalom tárolásra kerül. Egy-egy módosítási bejegyzés tartalmazza, hogy ki és mikor adta hozzá, illetve egy üzenet mez\H{o} is letárolásra kerül. \\
+\newline
+A verziózás mellett meg lehet jelölni egy-egy módosítási bejegyzést. Azért fontos, mert így valósítja meg a különböz\H{o} állapotok kezelését. Tehát ha egy bejegyzést megjelölünk staging vagy production tag-el, akkor lekérdezésnél ahol a staging állapotot szeretnénk megkapni, a tag alapján megkapjuk a hozzátartozó állapotot. \\
+\newline
+\textbf{\underline{Content cache data}} \\
+\newline
+Mivel a content service esetén csak delták tárolódnak, így performancia szempontjából megvizsgálandó, hogy szükséges-e - ha igen milyen mértékben - gyorsító tárak létrehozása. A gyorsító tárak pontok adatbázis megoldása az els\H{o} mérések, után érdemes vizsgálni. Itt értve, hogy a megoldás esetén, ha több példányban is fut, akkor memóriában is szinkronizálni kell, vagy elegend\H{o}-e lokálisan tárolni. Esetlegesen a nagy tartalmakra való tekintettel, adatbázisban történ\H{o} tárolás is jó megoldást nyújthat. \\
+\newline
+\textbf{\underline{Content template service}} \\
+\newline
+Ez a service a Content template engine motorok implementációit kezeli, koordinálja. A több engine megoldás els\H{o}dleges cél volt, hogy támogatva legyen a fejleszt\H{o}k, tartalom szerkeszt\H{o}k számára, a számára már ismert, bevált technika használata.  Ennek további el\H{o}nye, hogy meglév\H{o} rendszer migrációja során sokat könnyíthet a folyamaton. \\
+\newline
+\textbf{\underline{Content template engine (freetemplate, go, php, stb.)}} \\
+\newline
+Egy olyan elemi service, amely megkap egy template tartalmat és hozzá tartozó context modell adatot és kiéértékeli. Mivel sok fajta template kezel\H{o} rendszer megoldás létezik, ezért lehet\H{o}ség van akármelyik megvalósítására. A dolgozatban nem célom értékelni a különböz\H{o} megoldásokat, implementáció szempontjából népszer\H{u}ség és személyes ismeret alapján kerül kiválasztásra. \\
+\newline
+\textbf{\underline{Context service}} \\
+\newline
+Ez egy integrációs pontja is a rendszernek. Ennek a feladata, hogy el\H{o}állítsa azt a modellt, aminek változói használhatóak a templateben. Ilyen alapelemek például az aktuális év, dátum, rendszer megnevezése, a contenthez kapcsolódó alapadatok, felhasználói adatok. Ez egy CMS bevezetés során egyedi modulok hozzáadásával tovább fejleszthet\H{o}, b?víthet\H{o}.
