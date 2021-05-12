@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.12.6)  12 DEC 2020 10:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.12.6)  12 MAY 2021 17:50
 entering extended mode
 **./szakd_minta_report.tex
 (szakd_minta_report.tex
@@ -361,6 +361,21 @@ LaTeX Warning: Label `TeX_Catalogue' multiply defined.
 
 LaTeX Warning: Label `TeX_Catalogue' multiply defined.
 
+
+LaTeX Warning: Label `TeX_Catalogue' multiply defined.
+
+
+LaTeX Warning: Label `TeX_Catalogue' multiply defined.
+
+
+LaTeX Warning: Label `TeX_Catalogue' multiply defined.
+
+
+LaTeX Warning: Label `TeX_Catalogue' multiply defined.
+
+
+LaTeX Warning: Label `TeX_Catalogue' multiply defined.
+
 ) (hasznalat/hasznalat.aux))
 \openout1 = `szakd_minta_report.aux'.
 
@@ -447,10 +462,10 @@ LaTeX Info: Redefining \mit on input line 578.
 
 (cimlap/cimlap.tex
 Package epstopdf Info: Source file: <cimlap/ME_logo.eps>
-(epstopdf)                    date: 2020-12-06 19:50:27
+(epstopdf)                    date: 2021-05-10 14:37:05
 (epstopdf)                    size: 494499 bytes
 (epstopdf)             Output file: <cimlap/ME_logo-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-12-06 19:50:27
+(epstopdf)                    date: 2021-05-10 14:37:05
 (epstopdf)                    size: 473899 bytes
 (epstopdf)             Command: <epstopdf --outfile=cimlap/ME_logo-eps-converte
 d-to.pdf cimlap/ME_logo.eps>
@@ -822,92 +837,82 @@ Underfull \hbox (badness 10000) in paragraph at lines 71--117
  []
 
 [10] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 117--127
+Underfull \hbox (badness 10000) in paragraph at lines 117--126
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--127
+Underfull \hbox (badness 10000) in paragraph at lines 117--126
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--127
+Underfull \hbox (badness 10000) in paragraph at lines 117--126
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--127
+Underfull \hbox (badness 10000) in paragraph at lines 117--126
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--127
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 117--127
+Underfull \hbox (badness 10000) in paragraph at lines 117--126
 
  []
 
 [12 <./kepek/tipusok.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 134--136
+Underfull \hbox (badness 10000) in paragraph at lines 133--134
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 134--136
+Underfull \hbox (badness 10000) in paragraph at lines 141--142
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 143--145
+Underfull \hbox (badness 10000) in paragraph at lines 148--149
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 143--145
+Underfull \hbox (badness 10000) in paragraph at lines 154--156
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--153
+Underfull \hbox (badness 10000) in paragraph at lines 154--156
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--153
+Underfull \hbox (badness 10000) in paragraph at lines 156--163
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--160
+Underfull \hbox (badness 10000) in paragraph at lines 156--163
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--160
+Underfull \hbox (badness 10000) in paragraph at lines 156--163
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--163
 
  []
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 160--167
+Underfull \hbox (badness 10000) in paragraph at lines 164--167
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 160--167
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 160--167
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 160--167
+Underfull \hbox (badness 10000) in paragraph at lines 164--167
 
  []
 
@@ -917,87 +922,67 @@ Underfull \hbox (badness 10000) in paragraph at lines 168--171
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 168--171
+Underfull \hbox (badness 10000) in paragraph at lines 171--175
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--175
+Underfull \hbox (badness 10000) in paragraph at lines 171--175
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--180
+Underfull \hbox (badness 10000) in paragraph at lines 186--195
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--180
+Underfull \hbox (badness 10000) in paragraph at lines 186--195
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--180
+Underfull \hbox (badness 10000) in paragraph at lines 186--195
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 186--195
 
  []
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 191--200
+Underfull \hbox (badness 10000) in paragraph at lines 196--209
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 191--200
+Underfull \hbox (badness 10000) in paragraph at lines 196--209
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 191--200
+Underfull \hbox (badness 10000) in paragraph at lines 196--209
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 191--200
+Underfull \hbox (badness 10000) in paragraph at lines 196--209
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 201--215
+Underfull \hbox (badness 10000) in paragraph at lines 196--209
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 201--215
+Underfull \hbox (badness 10000) in paragraph at lines 196--209
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 201--215
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 201--215
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 201--215
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 201--215
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 201--215
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 201--215
+Underfull \hbox (badness 10000) in paragraph at lines 196--209
 
  []
 
@@ -1007,22 +992,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 201--215
  (fejezetek/dokumentacio.tex
 3. fejezet.
 
-Underfull \hbox (badness 10000) in paragraph at lines 6--16
+Underfull \hbox (badness 10000) in paragraph at lines 6--17
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 6--16
+Underfull \hbox (badness 10000) in paragraph at lines 6--17
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 6--16
+Underfull \hbox (badness 10000) in paragraph at lines 6--17
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 6--16
+Underfull \hbox (badness 10000) in paragraph at lines 6--17
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--17
 
  []
 
@@ -1032,42 +1022,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 6--16
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 31--36
+Underfull \hbox (badness 10000) in paragraph at lines 24--28
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--36
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 31--36
+Underfull \hbox (badness 10000) in paragraph at lines 24--28
 
  []
 
 <kepek/microservice.jpg, id=143, 390.70969pt x 249.18094pt>
 File: kepek/microservice.jpg Graphic file (type jpg)
 <use kepek/microservice.jpg>
-Package pdftex.def Info: kepek/microservice.jpg  used on input line 41.
+Package pdftex.def Info: kepek/microservice.jpg  used on input line 32.
 (pdftex.def)             Requested size: 390.70872pt x 249.18031pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 37--50
+Underfull \hbox (badness 10000) in paragraph at lines 28--41
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 37--50
+Underfull \hbox (badness 10000) in paragraph at lines 28--41
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 37--50
+Underfull \hbox (badness 10000) in paragraph at lines 28--41
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 37--50
+Underfull \hbox (badness 10000) in paragraph at lines 28--41
 
  []
 
@@ -1075,120 +1060,602 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--50
 <kepek/microservices.jpg, id=147, 815.045pt x 369.38pt>
 File: kepek/microservices.jpg Graphic file (type jpg)
 <use kepek/microservices.jpg>
-Package pdftex.def Info: kepek/microservices.jpg  used on input line 54.
+Package pdftex.def Info: kepek/microservices.jpg  used on input line 45.
 (pdftex.def)             Requested size: 407.5215pt x 184.68954pt.
 <kepek/structure.jpg, id=148, 972.63374pt x 589.20125pt>
 File: kepek/structure.jpg Graphic file (type jpg)
 <use kepek/structure.jpg>
-Package pdftex.def Info: kepek/structure.jpg  used on input line 56.
+Package pdftex.def Info: kepek/structure.jpg  used on input line 47.
 (pdftex.def)             Requested size: 437.68114pt x 265.1381pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 50--58
-
- []
-
-)
-Underfull \hbox (badness 10000) in paragraph at lines 59--27
+Underfull \hbox (badness 10000) in paragraph at lines 41--49
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--27
+Underfull \hbox (badness 10000) in paragraph at lines 50--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--27
+Underfull \hbox (badness 10000) in paragraph at lines 50--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--27
+Underfull \hbox (badness 10000) in paragraph at lines 50--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--27
+Underfull \hbox (badness 10000) in paragraph at lines 50--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--27
+Underfull \hbox (badness 10000) in paragraph at lines 50--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--27
+Underfull \hbox (badness 10000) in paragraph at lines 50--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--27
+Underfull \hbox (badness 10000) in paragraph at lines 50--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--27
+Underfull \hbox (badness 10000) in paragraph at lines 50--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--27
+Underfull \hbox (badness 10000) in paragraph at lines 50--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--27
+Underfull \hbox (badness 10000) in paragraph at lines 50--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--27
+Underfull \hbox (badness 10000) in paragraph at lines 50--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--27
+Underfull \hbox (badness 10000) in paragraph at lines 50--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--27
+Underfull \hbox (badness 10000) in paragraph at lines 50--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--27
+Underfull \hbox (badness 10000) in paragraph at lines 50--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--27
+Underfull \hbox (badness 10000) in paragraph at lines 50--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--27
+Underfull \hbox (badness 10000) in paragraph at lines 50--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--27
+Underfull \hbox (badness 10000) in paragraph at lines 50--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--27
+Underfull \hbox (badness 10000) in paragraph at lines 50--93
 
  []
 
-[19 <./kepek/microservices.jpg> <./kepek/structure.jpg>] [20] [21]
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--93
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--93
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--93
+
+ []
+
+[19 <./kepek/microservices.jpg> <./kepek/structure.jpg>] [20]
+<kepek/adatbazis.jpg, id=156, 1195.46625pt x 725.71124pt>
+File: kepek/adatbazis.jpg Graphic file (type jpg)
+<use kepek/adatbazis.jpg>
+Package pdftex.def Info: kepek/adatbazis.jpg  used on input line 103.
+(pdftex.def)             Requested size: 358.64264pt x 217.71504pt.
+<kepek/communication.jpg, id=157, 1035.11719pt x 578.16pt>
+File: kepek/communication.jpg Graphic file (type jpg)
+<use kepek/communication.jpg>
+Package pdftex.def Info: kepek/communication.jpg  used on input line 110.
+(pdftex.def)             Requested size: 414.03954pt x 231.2599pt.
+ [21]
+Underfull \hbox (badness 10000) in paragraph at lines 115--119
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 115--119
+
+ []
+
+<kepek/transaction.jpg, id=161, 357.58594pt x 414.79968pt>
+File: kepek/transaction.jpg Graphic file (type jpg)
+<use kepek/transaction.jpg>
+Package pdftex.def Info: kepek/transaction.jpg  used on input line 122.
+(pdftex.def)             Requested size: 214.5532pt x 248.88173pt.
+[22 <./kepek/adatbazis.jpg> <./kepek/communication.jpg>] [23 <./kepek/transacti
+on.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 142--146
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 146--149
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 153--169
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 153--169
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 153--169
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 153--169
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 153--169
+
+ []
+
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--238
+
+ []
+
+[25]
+<kepek/graylogELK.jpg, id=175, 361.35pt x 395.22656pt>
+File: kepek/graylogELK.jpg Graphic file (type jpg)
+<use kepek/graylogELK.jpg>
+Package pdftex.def Info: kepek/graylogELK.jpg  used on input line 241.
+(pdftex.def)             Requested size: 325.21199pt x 355.7006pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--284
+
+ []
+
+[26] [27 <./kepek/graylogELK.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 284--295
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 284--295
+
+ []
+
+[28] [29]
+Underfull \hbox (badness 10000) in paragraph at lines 321--332
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--332
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--332
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--332
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--332
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--332
+
+ []
+
+<kepek/canary.jpg, id=188, 450.18187pt x 258.9675pt>
+File: kepek/canary.jpg Graphic file (type jpg)
+<use kepek/canary.jpg>
+Package pdftex.def Info: kepek/canary.jpg  used on input line 335.
+(pdftex.def)             Requested size: 360.14598pt x 207.17426pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 338--341
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 338--341
+
+ []
+
+[30] [31 <./kepek/canary.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--426
+
+ []
+
+[32] [33] [34]) [35]
 \openout2 = `osszefoglalas/osszefoglalas.aux'.
 
-
-(osszefoglalas/osszefoglalas.tex
+ (osszefoglalas/osszefoglalas.tex
 4. fejezet.
-) [22
+) [36
 
 
 
@@ -1202,8 +1669,25 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 3
 
 (C:\Users\Laci\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-))
-[23
+)
+Overfull \hbox (22.07468pt too wide) in paragraph at lines 18--20
+\T1/cmtt/m/n/12 https://expertise.jetruby.com/log-management-graylog-vs-elk-d6e
+8f0492323 |
+ []
+
+
+Overfull \hbox (108.50357pt too wide) in paragraph at lines 22--24
+\T1/cmtt/m/n/12 https://blog.appoptics.com/introduction-to-distributed-tracing-
+with-zipkin-and-jaeger/ |
+ []
+
+
+Overfull \hbox (34.42166pt too wide) in paragraph at lines 24--26
+\T1/cmtt/m/n/12 https://blog.risingstack.com/packing-a-kubernetes-microservices
+-with-helm/ |
+ []
+
+) [37
 
 
 
@@ -1211,7 +1695,7 @@ File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ]
 \openout2 = `hasznalat/hasznalat.aux'.
 
- (hasznalat/hasznalat.tex) [24
+ (hasznalat/hasznalat.tex) [38
 
 
 
@@ -1220,8 +1704,8 @@ File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 \tf@thm=\write5
 \openout5 = `szakd_minta_report.thm'.
 
- (szakd_minta_report.aux (cimlap/cimlap.aux) (feladatkiiras/feladatkiiras.aux) 
-(fejezetek/bevezetes.aux)
+ (szakd_minta_report.aux
+(cimlap/cimlap.aux) (feladatkiiras/feladatkiiras.aux) (fejezetek/bevezetes.aux)
 (fejezetek/elmelet.aux) (fejezetek/dokumentacio.aux)
 (osszefoglalas/osszefoglalas.aux) (irodalomjegyzek/irod_jegyzek.aux)
 (hasznalat/hasznalat.aux))
@@ -1230,13 +1714,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6855 strings out of 479832
- 99472 string characters out of 2871530
- 412862 words of memory out of 3000000
- 23637 multiletter control sequences out of 15000+200000
+ 6885 strings out of 479832
+ 100117 string characters out of 2871530
+ 420822 words of memory out of 3000000
+ 23662 multiletter control sequences out of 15000+200000
  554190 words of font info for 76 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 94i,11n,98p,989b,379s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 94i,11n,98p,1572b,379s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Laci\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1
 200.pk> <C:\Users\Laci\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\
 ecti1200.pk> <C:\Users\Laci\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dp
@@ -1251,9 +1735,9 @@ KTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Laci\AppData\Loc
 al\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk> <C:\Users\Laci\AppDat
 a\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecxc1440.pk> <C:\Users\Laci\A
 ppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecxc2488.pk>
-Output written on szakd_minta_report.pdf (24 pages, 826587 bytes).
+Output written on szakd_minta_report.pdf (38 pages, 1263694 bytes).
 PDF statistics:
- 673 PDF objects out of 1000 (max. 8388607)
+ 756 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

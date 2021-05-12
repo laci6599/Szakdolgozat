@@ -1,7 +1,7 @@
 \Chapter{Fejleszt\H{o}i dokumentáció}
 \label{Chap:dokumen}
 
-Ebben a fejezetben ismertetni fogom a fejleszteni kívánt rendszer tervezését, architekrúrális tervét. A rendszer elkészítése szakért\H{o}k tapasztalatai alapján és segítségével történik.
+Ebben a fejezetben ismertetni fogom a fejleszteni kívánt rendszer tervezését, architekrúrális tervét, illetve az implementálás során használt technológiákat. A rendszer elkészítése szakért\H{o}k tapasztalatai alapján és segítségével történik.
 
 \Section{Koncepció} \emph{}\\
 \newline
@@ -12,29 +12,20 @@ A back-end esetében pedig lehet\H{o}ség nyílt, egy sokkal inkább sokoldalúbb, mo
 Milyen új CMS architektúra dolgozható ki? Ha a fenn említett szempontokat figyelembe vesszük, akkor erre egy olyan microservice alapú megoldás adhat választ, ami könnyen telepíthet\H{o}, b\H{o}vítésre nyitott, módosításra zárt. Interface alapú megoldások. Jelen esetben az interfacenek a REST-es végpontokat is tekinthetjük. \\
 \newline
 A dolgozatban egy tartalomkezel\H{o} kerül kidolgozásra. A tartalomkezel\H{o} microservicek összessége, ami a hagyományos CMS-esek esetében egy adott oldal html tartalmát határozza meg, maximum néhány makró kifejezéssel. \\
+\newline
 \noindent Fontosabb funkciók:
-\vskip 1.0cm
-\begin{itemize}
-	
+\begin{itemize}	
 	\item Lehessen verziózni a tartalmakat (pl.: jogi nyilatkozat oldalát)
-	
 	\item Legyen staging mód (piszkozat kezelés, illetve élesítés el\H{o}tt lehessen látni a leend\H{o} eredményt)
-	
 	\item Multi platformos (desktop, mobilos verziók kezelése)
-	
 	\item Makrók használati lehet\H{o}ségének biztosítása (b\H{o}vítésre nyitott, módosításra zárt elv)
-	
-	\item Egyedi kontextuskezel\H{o}nek integrálhatósága (egy makró milyen adatokból dolgozhat, rendszerhez igazított session kezelés)
-	
+	\item Egyedi kontextuskezel\H{o}nek integrálhatósága (egy makró milyen adatokból dolgozhat, rendszerhez igazított session kezelés)	
 \end{itemize}
-
 \noindent\textbf{\underline{Makrók, templatek el\H{o}nyei:}} \\
 \newline
 Vannak esetek, mikor a tartalom nagy százalékban statikus, azonban vannak bizonyos elemei, akár a felhasználó neve, adott év, stb. Ezeket ne kelljen mindig
 módosítgatni, ezért valamilyen template leíróval kezelhet\H{o}. Azonban a tervezés során nem szeretnénk egy nyelvre korlátozni, sokkal inkább szabadon igényeknek megfelel\H{o}en b\H{o}víthet\H{o}vé tervezni. Ehhez kapcsolódik szorosan a kontextuskezel\H{o} amelyet a templatel összekapcsolva fog el\H{o}állni a tényleges tartalom. \\
-\newline
-
-\Section{A Microservicekr\H{o}l általában} \emph{} [8]\\
+\Section{A Microservicekr\H{o}l általában} \emph{} [7]\\
 \newline
 \begin{figure} [ht]
 	\centering
@@ -94,4 +85,343 @@ Egy olyan elemi service, amely megkap egy template tartalmat és hozzá tartozó co
 \newline
 \textbf{\underline{Context service}} \\
 \newline
-Ez egy integrációs pontja is a rendszernek. Ennek a feladata, hogy el\H{o}állítsa azt a modellt, aminek változói használhatóak a templateben. Ilyen alapelemek például az aktuális év, dátum, rendszer megnevezése, a contenthez kapcsolódó alapadatok, felhasználói adatok. Ez egy CMS bevezetés során egyedi modulok hozzáadásával tovább fejleszthet\H{o}, b?víthet\H{o}.
+Ez egy integrációs pontja is a rendszernek. Ennek a feladata, hogy el\H{o}állítsa azt a modellt, aminek változói használhatóak a templateben. Ilyen alapelemek például az aktuális év, dátum, rendszer megnevezése, a contenthez kapcsolódó alapadatok, felhasználói adatok. Ez egy CMS bevezetés során egyedi modulok hozzáadásával tovább fejleszthet\H{o}, b\H{o}víthet\H{o}.\\
+\newline
+\textbf{Adatbázis:} \\
+\newline
+A microservicek közül egyedül a Content Store microservice igényel adatbázist. Ebben tárolódik a megjeleníteni kívánt tartalom. Ez az adatbázis tartalmazza a következ\H{o} adatokat:
+
+\begin{itemize}
+	\item Egy integer típusú contentId, ami els\H{o}dleges kulcs szerepel rendelkezik az azonosítás érdekében.
+	\item Egy contentProcessType, ami String típusú adatot tartalmaz. Ugye ez adatbázistól függ\H{o}en lehet char, varchar stb. Ez alapján fogja meghívni a megfelel\H{o} Content Processort.
+	\item Egy createdDate mez\H{o}, ami a létrehozás dátumát tárolja el.
+	\item Egy contentData mez\H{o}, ami magát a megjelenítend\H{o} tartalmat tárolja.
+\end{itemize}
+
+\begin{figure} [ht]
+	\centering
+	\includegraphics[scale=0.3]{kepek/adatbazis.jpg}
+\end{figure}
+
+\vskip 0.5cm
+A rendszerben szerepl\H{o} microservicek:
+\begin{figure} [ht]
+	\centering
+	\includegraphics[scale=0.4]{kepek/communication.jpg}
+\end{figure}
+
+\vskip 0.5cm
+\Section{Használt technológiák ismertetése} \emph{}
+\subsection{Tranzakció kezelés} \emph{} \\
+\newline
+Manapság egyre elterjedtebb körben használják a microservice architektúrát. A legnagyobb kérdést ennek használatában a microservicek közötti tranzakció kezelés jelenti.
+A monolit rendszerben egy helyi tranzakció több szolgáltatásra oszlik fel, amelyeket egymás után hívnak meg.\\
+\vskip 2cm
+\begin{figure} [ht]
+	\centering
+	\includegraphics[scale=0.6]{kepek/transaction.jpg}
+\end{figure}
+\vskip 0.5cm
+A fenti példában, ha a User küld egy Put Order action-t a monolitikus rendszernek, akkor a rendszer létrehoz egy helyi adatbázis tranzakciót, amely több adatbázis táblán fog dolgozni. Ha bármelyik lépés hibára fut, a tranzakció visszaállhat. Ezt \textbf{ACID}-ként nevezzük.
+\vskip 0.5cm
+\textbf{ACID} [8]
+\vskip 0.5cm
+\begin{itemize}
+	\item \textbf{Atomic} - Lényegében egy atomi tranzakció biztosítja, hogy minden commit sikeresen befejezze az egész m\H{u}veletet. Vagy, ha a m\H{u}velet közepén megszakadt a kapcsolat, az adatbázis visszaáll a m\H{u}velet végrehajtásának megkezdése el\H{o}tti állapotába. Ez fontos, hogy megakadályozzuk az összeomlásokat és a kieséseket, amelyek olyan eseteket hoznak létre, amikor a tranzakció csak részben, egy ismeretlen állapotig fejez\H{o}dik be.
+	\item \textbf{Consistent} - A következetesség az adatintegritási korlátok fenntartására utal. A következetesség betartatása biztosítja, hogy ha egy adatbázis illegális állapotba kerül (ha az adatintegritási korlátok megsértése történik), akkor a folyamat megszakad, és a változások visszakerülnek korábbi, legális állapotukba.
+	\item \textbf{Isolated} - Garantálja, hogy minden tranzakció külön-külön történjen. Egyetlen tranzakciót sem érint más tranzakció. Tehát egy tranzakció nem képes beolvasni egyetlen olyan tranzakció adatait sem, amely még nem fejez?dött be.
+	\item \textbf{Durable} - A tartósság biztosítja, hogy az adatbázisban végrehajtott tranzakciók rendszerhibák esetén is végleg fennmaradjanak. Ez biztosítja, hogy az adatbázisban lév\H{o} adatokat ne sértsék meg:
+	\begin{itemize}
+		\item Szolgáltatási kiesések 
+		\item Összeomlások 
+		\item Egyéb kudarc esetek
+	\end{itemize}
+	
+	A tranzakció során bekövetkezett változásokat véglegesen kell tárolni. A tartósságot az adatbázisok újraindításakor hivatkozott változásnaplók használatával érhetjük el.
+\end{itemize}
+Mi lehet a probléma?\\
+\newline
+Az els\H{o} felmerül\H{o} kérdés, hogy hogyan marad egy tranzakció atomikus?
+A másik kérdés pedig, hogy ha egy objektumot tranzakcióval írnak le és egyidej\H{u}leg egy másik kérés olvassa azt, akkor mit kell visszaadnia az objektumnak, a régi vagy a frissített adatokat?
+\subsection{Lehetséges megoldások} \emph{} \\
+\newline
+Nagyon fontos nagy hangsúlyt helyezni a fent említett kérdésekre, mert különben nincs mód megmondani, hogy egy tranzakció sikeresen teljesült-e. A probléma megoldására kétfajta mód lehet sikeres:
+\begin{itemize}
+	\item 2pc (two-phase commit) 
+	\item Saga pattern 
+\end{itemize}
+A 2pct-t széles körben használják az adatbázis rendszerekben. Bizonyos helyzetekben microserviceknél is lehet használni, viszont nagyon vigyázni kell.
+A 2pc, ahogy a neve is utal rá, két fázisból áll: egy el\H{o}készít\H{o} és egy véglegesít\H{o} fázis. Egy prepare és egy commit. 
+Az el\H{o}készít\H{o} fázisban a microserviceket tulajdonképpen felkészítik arra, hogy valamilyen adatváltozás fog történni. Miután ez megtörtént, bekövetkezik a véglegesít\H{o} fázis, ami a microserviceket megkéri a tényleges változtatások végrehajtására.\\
+\newline
+\textbf{2pc el\H{o}nyei és hátrányai}\\
+\newline
+Egyik legnagyobb el\H{o}nye, hogy garantálja, hogy a tranzakció atomi. Emellett, lehet\H{o}vé teszi az írás és az olvasás szétválasztását. Ez azt jelenti, hogy csak akkor láthatóak a mez\H{o} változásai, ha a Coordinator elvégezte a módosításokat.
+\newline
+A hátrányai közé tartozik, hogy a 2pc blokkoló. Ez pedig azt jelenti, hogy a módosítani kívánt dokumentumot a protokoll lezárja, még miel?tt a tranzakció befejez\H{o}dne, ami viszont megakadályozza, hogy az ügyfél új megrendeléseket hajtson végre. Így pedig lehetséges, hogy két tranzakció kölcsönösen lezárja egymást és holtpont jöhet létre.\\
+\newline
+\textbf{Saga pattern}\\
+\newline
+A Saga pattern egy másik széles körben használt minta. Amíg a 2pc szinkron, addig a Saga pattern aszinkron és reaktív. Itt a tranzakciót aszinkron helyi tranzakciók teljesítik a microserviceken. Ezek esemény buszon keresztül kommunikálnak egymással.
+Ha egy mikroszolgáltatás nem fejezi be a helyi tranzakciót, akkor a többi mikroszolgáltatás kompenzációs tranzakciókat hajt végre a módosítások visszavonása érdekében.\\
+\newline
+\textbf{El\H{o}nyei:}
+\begin{itemize}
+	\item Támogatja a hosszú élet\H{u} tranzakciókat. 
+	\item A többi microservicet nem blokkolják. 
+	\item Az összes helyi tranzakció párhuzamosan zajlik, így egy objektum sincs zárolva.
+\end{itemize}
+\textbf{Hátrányai:}
+\begin{itemize}
+	\item Nehéz a hibakeresés, különösen több microservicenél.
+	\item Minél összetettebb a rendszer, annál nehezebb fenntartani az eseményüzeneteket.
+	\item Nincs olvasási izolációja.
+\end{itemize}
+
+\subsection{Naplózás, logging, Központi loggy\H{u}jt\H{o}k összehasonlítása} \emph{} \\
+\newline
+Mire jó a logolás?\\
+\newline
+A logolás, naplózás segít abban, mind magunknak, mind a többi fejleszt?nek és egyaránt a felhasználóknak is, hogy nagyobb betekintést kapjunk arra, hogy mi is történik az alkalmazáson belül, ez pedig megkönnyíti a tevékenységek felügyeletét és a problémák felkeresését. Így az alkalmazás biztonságát tudjuk garantálni, csökkenteni tudjuk az összeomlásokat. Ezeket a naplókat viszont nehéz kezelni és nyomon követni, ebben segítségünkre lehetnek a nyílt forráskódú naplókezel\H{o}k. A továbbiakban ezek közül a három legismertebbet fogom ismertetni és összehasonlítani, ezek pedig a Logstash, Syslog-ng és a Fluentd.\\
+\newline
+\textbf{Logstash}\\
+\newline
+A Microserviceknél használatos logoláshoz a legismertebb a Logstash. Népszer\H{u}sége köszönhet\H{o} a széleskör\H{o} plugin készletének, és hogy könnyen integrálható más Elastic termékekkel, mint például bemenetek, kodekek sz\H{u}r\H{o}k és kimenetek.\\
+\newline 
+Mire használhatjuk?\\
+\newline
+A logokat össze tudjuk gy\H{u}jteni, tudjuk elemezni, és el tudjuk tárolni a kés\H{o}bbi használatra.\\
+\newline
+El\H{o}nyei:\\
+\newline
+A számos beépül\H{o} modul miatt eléggé rugalmas.\\
+\newline
+Átlátható, átfogó, egyszer\H{u} dokumentáció, könny\H{u} konfigurálás. Számos online segítség áll rendelkezésre.\\
+\newline
+Hátrányai:\\
+\newline
+Egyik legnagyobb hátránya a teljesítmény és er\H{o}forrás-fogyasztás. Sokkal lassabb teljesítményre képes, mint a többi logszállító.
+Ez a legnagyobb problémát nagy forgalmú telepítéseknél okozhatja.\\
+\newline
+\textbf{Syslog-ng}\\
+\newline
+Leginkább akkor érdemes használni, ha sz\H{u}kös er\H{o}forrású feltételeink vannak, viszont mégis összetett feldolgozást szeretnénk végrehajtani.
+Több naplóüzenet között korrelációkat tud futtatni (feltételezve, hogy ezek mind a pufferben vannak).\\
+\newline
+\textbf{Fluentd}\\
+\newline
+A Fluentd a JSON-ban történ\H{o} naplózás ötletére épült. Minden nyelvhez vannak naplózási könyvtárak, vagyis egyszer\H{u}en lehet csatlakoztatni az egyéni alkalmazásokat a naplózási folyamathoz.\\
+\newline
+El\H{o}nyei:\\
+\newline
+A Fluentd b\H{o}vítmények Ruby-ban vannak, és nagyon könnyen írhatók. Tehát rengeteg van bel\H{o}lük, nagyjából minden forrásnak és célnak van beépül\H{o} modulja. Ez a folyékony könyvtárakkal párosulva azt jelenti, hogy a Fluentd segítségével szinte bármit bármihez csatlakoztathatunk. A Fluentd ma már CNCF projekt, így a Kubernetes integráció nagyon jó.\\
+\newline
+Hátrányai:\\
+\newline
+Egyetlen és legnagyobb hátránya a teljesítménybeli lassúsága.\\
+\newline
+\textbf{Graylog vs. ELK} [9] \\
+\newline
+A Graylog és az ELK a két legnépszer\H{u}bb nyílt forráskódú megoldás a naplók kezelési eljárásának egyszer\H{u}sítésére.\\
+\newline
+\textbf{ELK:}
+Az ELK a következ\H{o} szolgáltatások kombinációjaként épül fel:\\
+Elasticsearch + Logstash + Kibana. Mindhárom nyílt forráskódú.\\
+\newline
+\textbf{Elasticsearch:} hatékony, jól skálázható keres\H{o}motor, képes nagy mennyiség\H{u} adat tárolására.\\
+\newline
+\textbf{Logstash:} adatok lekérése egy adott helyr\H{o}l, vagy helyre. Számos pluginnel és nagy felhasználói közösséggel rendelkezik.\\
+\newline
+\textbf{Kibana:} grafikus felhasználói felület, lehet\H{o}vé teszi az Elasticsearch adatbázis összetett adatának keresését, elemzését és vizualizálását. Könnyen konfigurálható.\\
+\newline
+\textbf{Graylog:} Rengeteg lehet\H{o}séget kínál a naplók elemzésére, kezelésére. M\H{u}ködése nagyon hasonlít az ELK-hoz. [10]\\
+\vskip 2cm
+\begin{figure} [ht]
+	\centering
+	\includegraphics[scale=0.9]{kepek/graylogELK.jpg}
+\end{figure}
+\vskip 0.5cm
+A népszer\H{u}ségük és hatékonyságuk közel hasonló, viszont ami miatt talán a Graylog kiemelkedhet, az az intuitív felhasználói felülete és az engedélyek kezelésének lehet\H{o}sége.\\
+\newline
+\textbf{Request tracing:}\\
+\newline
+A header-ben lév\H{o} azonosítóknak a logba elhelyezését valósítja meg. Ennek segítségével lehet látni egy request-hez tartozó összes logot. Vannak kifejezetten erre való rendszerek (pl. ZipKin, Jaeger). Ezekkel a rendszerekkel nyomon tudjuk követni alkalmazásunkat.\\
+\newline
+[11]\\
+\newline
+\textbf{Zipkin:}\\
+\newline
+Egy elosztott nyomkövet\H{o} rendszer referenciaarchitektúráját képviseli.
+\newline
+4 összetev\H{o}b\H{o}l áll:\\
+\newline
+A GUI-t és az API-t a felhasználók számára a \textbf{keres\H{o}szolgáltatás} és a \textbf{webes felhasználói felület} együttesen biztosítja. A \textbf{gy\H{u}jt\H{o}} ellen\H{o}rzi a bejöv\H{o} adatokat és továbbítja ezeket a tárolóba. És végül a Zipkin legfontosabb összetev\H{o}je a \textbf{tároló motor}ja.\\
+\newline
+\textbf{Jaeger:}\\
+\newline
+A Jaeger egy nyomkövet\H{o} eszköz, ami Go nyelven van implementálva. Nagyon hasonló összetev\H{o}kb\H{o}l áll, ugyanúgy rendelkezik gy\H{u}jt\H{o}vel, adattárolóval, lekérdezési API-val és webalapú (React) felhasználói felülettel. Támogatja a Zipkin beviteli portot és az interfészt, így lehet\H{o}vé téve a Zipkin szolgáltatásainak zökken\H{o}mentes használatát.
+A Jaeger és a Zipkin közötti különbségnek megemlíthetnénk az architektúrális differenciát és az információk megjelenítésének módját. A Zipkin Java-ban van implementálva, - így jól illeszkedik a vállalati környezethez, azonban más népszer\H{u}, magas szint\H{u} nyelveket is támogat - a Jaeger pedig Go-ban van megvalósítva. A Jaeger szintúgy a keresésre összpontosít.
+A Zipkin régebbi, így kevésbé moduláris architektúrát használ, mint a modernebb Jaeger.\\
+\newline
+\textbf{Datadog}\\
+\newline
+A Datadog egy olyan kész rendszer, ami a servicek között tud mérni id\H{o}t trace id-val, jó library támogatással rendelkezik és ki tud jelenteni jogokat.
+Ha az alkalmazásban hibát, vagy abnormális késést tapasztalunk, akkor a naplózással pontosan kideríthetjük a hiba okát. Egy adott kérelemhez összegy\H{u}jthetjük a hozzátartozó naplókat, ezáltal láthatjuk részletesen, hogy hogyan lett kezelve, így gyorsan diagnosztizálhatjuk a hibát.
+A Datadog automatikusan összegy\H{u}jti az adott kérelem összes naplóját, és zökken\H{o}mentesen összekapcsolja \H{o}ket ugyanazon kérés nyomkövetési adataival.\\
+\newline
+\textbf{Skálázhatóság}\\
+\newline
+Hogyan is történik a skálázhatóság a microserviceknél?\\
+\newline
+Dinamikusan alkalmazkodnunk kell az igényekhez, így ha valamikor megváltoznak a körülmények, manuálisan létre kell hozni az er\H{o}forrásokat, amiket csak a kés\H{o}bbiekben fogunk csökkenteni. Ez viszont csökkenti az er\H{o}forrás-kihasználás optimalizációját. Erre megoldásként szolgál a Kubernetes automatikus skálázás lehet\H{o}sége, amivel a létrehozás teljesen automatikusan történik, ezáltal a használt er\H{o}források és a költségek is lecsökkennek. Leegyszer\H{u}síti az er\H{o}forrás-gazdálkodást.\\
+\newline
+\textbf{Load-balancing, avagy teheregyensúlyozás}\\
+\newline
+A load-balancingot a skálázhatóság maximalizálása érdekében használják, mivel a load-balancing megoldja a hálózati forgalom elosztását a szolgáltatások között. 
+A LoadBalancer típusú szolgáltatás egy felh\H{o} alapú, küls\H{o} terheléselosztót használ, és csak meghatározott felh\H{o}szolgáltatókkal használható. Ezek például az AWS, Azure, OpenStack, CloudStack és Google Compute Engine. 
+A Kubernetes többek között ezt a load-balancingot is lehet\H{o}vé teszi számunkra.
+A több microservice több adatbázist jelent, így ezek külön-külön jobban skálázhatóak.\\
+\subsection{M\H{u}ködés stabilitását karbantartását segít\H{o} részek, hibakezelés} \emph{} \\
+\newline
+\textbf{Deployment eljárások}\\
+\newline
+Amikor egy alkalmazás új verziót telepít, szüksége van egy telepítési stratégiára, amelyet csak akkor használhat, ha a gyártási forgalmat az új verzióra irányítja, miután sikeresen telepítette és opcionálisan tesztelte.
+A telepítési stratégiák az alkalmazás futó példányának megváltoztatására vagy frissítésére használt gyakorlatok.
+\newline
+A továbbiakban két telepítési stratégiát említek meg.
+\newline
+A kék-zöld telepítés olyan telepítési stratégia, amely két azonos környezetet használ, egy "kék" (staging) és egy "zöld" (gyártási) környezetet az alkalmazás vagy szolgáltatás különböz\H{o} verzióival. A min\H{o}ségbiztosítást és a felhasználói elfogadási tesztet általában az új verziókat vagy változásokat tároló kék környezetben végzik. A felhasználói forgalom átkerül a zöld környezetb\H{o}l a kékbe, miután az új módosításokat tesztelték és elfogadták a kék környezetben. Ezután válthat az új környezetre, ha a telepítés sikeres.
+Ez a módszer csökkenti a kockázatot és minimalizálja az állásid\H{o}t. Két gyártási környezetet (kék és zöld néven) használ megbízható tesztelés, folyamatos leállás nélküli frissítések és azonnali visszaállítás érdekében.
+\begin{itemize}
+	\item Zökken\H{o}mentes: a felhasználóknak nem szabad semmilyen leállást tapasztalniuk. 
+	\item Biztonságos: alacsony a kudarc esélye. 
+	\item Teljesen visszafordítható: visszavonhatjuk a változást káros hatások nélkül.
+\end{itemize}
+A kék-zöld módszer alapja az egymás melletti telepítés. Ehhez két különálló, de azonos környezetre van szükségünk.
+A kék-zöld nagyszer\H{u} megoldás, amikor szükségünk van:
+\begin{itemize}
+	\item Uptime: amikor nem engedhetjük meg magunknak, hogy leromboljunk egy rendszert annak frissítésére. 
+	\item Pontos tesztek: amikor megbízhatóbb és pontosabb tesztekre van szükség. 
+	\item Megbízhatóság: amikor javítani akarjuk a telepítések megbízhatóságát.
+\end{itemize}
+A kék-zöld telepítések használatához néhány dologra lesz szükségünk:
+\begin{itemize}
+	\item Automatizálás: folyamatos kiépítési folyamatokra van szükségünk a kiépítési, telepítési és tesztelési folyamatok automatizálásához.
+	\item Tesztelés: átfogó tesztekre van szükségünk. Bízunk benne, hogy eldönti, mikor állnak készen a kiadások. Folyamatos integrációt kell használnunk, hogy gyorsan elkapjuk a hibákat, és teszteljük az új verziókat, miel\H{o}tt életbe lépünk. 
+	\item Elkülönítés: két egyforma és különálló környezetre van szükségünk. Ellenkez\H{o} esetben az egyik környezet hatással lehet a másikra.
+\end{itemize}
+\textbf{A kék-zöld telepítések hátrányai}
+\begin{itemize}
+	\item Hideg indítás: a felhasználók lassúságot tapasztalhatnak, amikor hirtelen áttérnek az új környezetre. Valószín\H{u}leg ezen a ponton bármilyen észlelhetetlen 	  teljesítményprobléma megjelenik.
+	\item Költségek: A költség a kék-zöld telepítések hátránya. A gyártási környezet megismétlése bonyolult és költséges lehet, f\H{o}leg mikroszolgáltatások esetén.
+	\item Id\H{o}: a kék-zöld telepítési folyamat beállítása id\H{o}t és er\H{o}feszítést igényel. A folyamat bonyolult és nagy felel\H{o}sséggel tartozik. El\H{o}fordulhat, hogy sok iterációt kell elvégeznünk, miel\H{o}tt megfelel\H{o}en m\H{u}ködnénk.
+	\item Adatbázisok: Két adatbázisunk van, a kék és a zöld, és mivel ügyelni kell az adatok szinkronban tartására, így az adatbázis-migrációk sokkal nehezebbek. Az adatbázis-sémaváltásoknak el\H{o}re és hátra kompatibiliseknek kell lenniük.
+	\item Megosztott szolgáltatások: az adatbázisok és más megosztott szolgáltatások szivárogtathatnak információkat kék és zöld között. Óvatosnak kell lennünk itt, különben az egyik környezet közvetve befolyásolhatja a másikat. Ez megsértheti az elkülönítési szabályt, és megzavarhatja a telepítést.
+\end{itemize}
+A kék-zöld telepítének mégis inkább a pozitív oldalára helyezném a hangsúlyt. Egyik el\H{o}nye, hogy egyszer\H{o}, gyors, jól érthet\H{o} és könnyen megvalósítható. A visszagörgetés szintén egyszer\H{u}, mert bármilyen probléma esetén egyszer\H{o}en visszaviheti a forgalmat a régi környezetbe. A kék-zöld telepítések ezért nem annyira kockázatosak a többi telepítési stratégiához képest.\\
+\newline
+\textbf{Kanári telepítés} [12]\\
+\newline
+A kanári telepítés olyan telepítési stratégia, amely egy alkalmazást vagy szolgáltatást fokozatosan bocsát ki a felhasználók egy részének. A célkörnyezetben lév\H{o} összes infrastruktúra kis fázisokban frissül (pl .: 2\%, 25\%, 75\%, 100\%). A kanári kiadás a legkisebb kockázatra hajlamos, az összes többi telepítési stratégiához képest, emiatt az ellen\H{o}rzés miatt.\\
+\newline
+A szoftverfejlesztésben a kanári telepítés a szakaszos kiadások gyakorlása. El\H{o}ször a felhasználók egy kis részére kiadunk egy szoftverfrissítést, így tesztelhetik és visszajelezhetnek. A módosítás elfogadását követ\H{o}en a frissítés a többi felhasználó számára elérhet\H{o}vé válik.\\
+\newline
+A kék-zöld telepítésekhez hasonlóan a kanári stratégia leállás nélküli frissítéseket és könny\H{u} visszagörgetést kínál. A kék-zöldt\H{o}l eltér\H{o}en a kanári telepítések gördülékenyebbek, és a kudarcoknak korlátozott hatása van.\\
+\newline
+Egy kanári telepítésben viszont telepítjük a frissítést a rendszereinkbe, és a felhasználókat két csoportra osztjuk. Kis százalékuk a kanári szigetekre megy, míg a többiek a régi változaton maradnak, kontrollként.\\
+\vskip 5cm
+\begin{figure} [ht]
+	\centering
+	\includegraphics[scale=0.8]{kepek/canary.jpg}
+\end{figure}
+\vskip 0.5cm
+Kés\H{o}bb, miután id\H{o}t szántunk a kanári verzió értékelésére, dönthetünk úgy, hogy a felhasználók többi részét áttelepítjük a kanári csatornára, vagy mindenkit visszavezetünk a régi verzióra. Mint láthattuk, a kanári telepítések az alkalmazás két verziójának egyidej\H{u} futtatását jelentik. A régi verziót "istállónak" és az újat "kanárinak" hívjuk. Kétféle módon telepíthetjük a frissítést: folyamatos telepítések és egymás melletti telepítések.\\
+\newline
+\textbf{A kanári telepítések el\H{o}nyei:}\\
+\begin{itemize}
+	\item A / B tesztelés: A kanári felhasználhatjuk A / B tesztelésre. Más szavakkal, két alternatívát mutatunk be a felhasználóknak, és megnézzük, melyik kap jobb vételt. A kanári telepítések lehet\H{o}vé teszik a szervezetek számára, hogy a gyártásban valódi felhasználókkal és felhasználási esetekkel teszteljenek, és összehasonlítsák a különböz\H{o} szolgáltatási verziókat.
+	\item Kapacitás teszt: lehetetlen tesztelni egy nagy termelési környezet kapacitását. A kanári telepítésekkel a kapacitástesztek beépítettek. A rendszerünkben felmerül\H{o} teljesítményproblémák elkezd\H{o}dnek, amikor lassan migráljuk a felhasználókat a Kanári-szigetekre. 
+	\item Visszajelzés: felbecsülhetetlen hozzájárulást kapunk a valós felhasználóktól.
+	\item Nincs állásid\H{o}: a kék-zöld telepítésekhez hasonlóan a kanári telepítés sem hoz leállást.
+	\item Könny\H{u} visszagörgetés: ha valami elromlik, akkor könnyen visszaléphetünk az el\H{o}z\H{o} verzióra.
+\end{itemize}
+\textbf{A kanári telepítések hátrányai:}
+\begin{itemize}
+	\item Költségek: az egymás melletti telepítések költségei magasabbak, mert extra infrastruktúrára van szükségünk. Használja el\H{o}nyére a felh\H{o}t; szükség szerint hozzon létre és távolítson el er\H{o}forrásokat a költségek csökkentése érdekében.
+	\item Komplexitás: a kanári telepítések ugyanolyan összetettség\H{u}ek, mint a kék-zöld telepítések. Sok gyártási gép birtokában van, a felhasználók áttelepítése és az új rendszer felügyelete; ezek bonyolult feladatok. Kerülje el minden áron, hogy kézzel végezze \H{o}ket. Mindig automatizálja a telepítési folyamatot egy olyan CI / CD platform segítségével, mint a Semaphore.
+	\item Id\H{o}: az egészséges kanári telepítési cs\H{o}vezeték felállítása id\H{o}t és er\H{o}feszítést igényel. Pozitívum, hogy ha rendbe tesszük, akkor gyakoribb és biztonságosabb telepítéseket hajthatunk végre.
+	\item Adatbázisok: egész könyveket írtak arról, hogyan lehet az adatbázis sémáját megváltoztatni. A probléma az, hogy az adatbázisnak a telepítés során egyszerre kell m\H{u}ködnie a kanári és a vezérl\H{o} verziókkal. Tehát, ha tör\H{o} sémaváltásaink vannak, akkor bajban vagyunk. A változtatások során meg kell \H{o}riznünk a visszamen\H{o}leges kompatibilitást, ami újabb komplexitásréteget ad. 
+\end{itemize}
+\textbf{Helm configuration} [13]\\
+\newline
+A Kubernetes egyik legjobb tulajdonsága a konfiguráción alapuló jellege, amely lehet\H{o}vé teszi az er\H{o}források létrehozását vagy módosítását. Könnyedén beállíthatja és kezelheti az összetev\H{o}ket a konténerek futtatásától a terheléselosztókig a YAML vagy JSON fájlokon keresztül.
+\newline
+A Helm egy nyílt forráskódú projekt, amelyet a Kubernetes szervezet tart fenn. Ez megkönnyíti a Kubernetes er\H{o}források csomagolását, szállítását és frissítését egyetlen csomagban.
+A Helm kliens-szerver architektúrában dolgozik, ahol a Tiller Server egy fürtön belüli kiszolgáló, amely interakcióba lép a Helm klienssel és kapcsolódik a Kubernetes API szerverhez. Feladata a diagramok egyesítése és az ügyfél által kért Kubernetes-er\H{o}források telepítése.
+\newline
+Míg a Kubernetes-t a rendelkezésre álló er\H{o}források kezelésére és a telepítések összehangolására használják, a Helm  egy olyan eszköz, amely lehet\H{o}vé teszi a fejleszt\H{o}k számára, hogy összehangolják a Kubernetes-fürtökhöz elküldött információkat. Helm a Kubernetes tetején fut, és felvázolja az alkalmazás felépítését.\\
+\newline
+\textbf{Ansible, Terraform}\\
+\newline
+Mi a Terraform?\\
+\newline
+A Terraform egy nyílt forráskódú parancssori eszköz, amely bármilyen típusú infrastruktúra biztosítására használható több tucat különböz\H{o} platformon és szolgáltatáson. A terraform kódot HCL-ben vagy a HashiCorp Config nyelvben írják. Erre itt egy példát láthat. A HCL könnyen megtanulható és könnyen elhárítható. Arra hivatott, hogy egyensúlyt teremtsen az emberbarát és a géppel olvasható kód között.
+\newline
+A Terraform segítségével egyszer\H{u}en deklarálja az er\H{o}forrásokat és a konfigurálásuk módját, majd a Terraform feltérképezi a függ\H{o}ségeket és mindent felépít Önnek. Egy pillanat alatt bemutatunk egy bemutatót, ahol a Terraform feláll egy szerverrel, majd felhívja az Ansible-t a konfigurálásához.
+\newline
+Az Ansible és a Terraform nem verseng\H{o} megoldások, mert megoldják az infrastruktúra és a szoftver telepítésének különböz\H{o} szakaszait. A Terraform lehet\H{o}vé teszi a rendszer infrastruktúrájának meghatározását és létrehozását, amely magában foglalja azt a hardvert, amelyen az alkalmazások futtatni fogják. Ezzel szemben az Ansible úgy konfigurálja és telepíti a szoftvert, hogy a lejátszási könyveket a megadott kiszolgálópéldányokon futtatja. Ansible futtatása az er\H{o}forrásokon A létrehozásuk után közvetlenül biztosított Terraform lehet\H{o}vé teszi, hogy az er\H{o}forrásokat sokkal gyorsabban felhasználhatóvá tegye a felhasználási esetéhez. Ez megkönnyíti a karbantartást és a hibaelhárítást is, mivel minden telepített kiszolgálóra ugyanazokat a m\H{u}veleteket alkalmazzák.\\
+\newline
+Az Ansible egy másik nyílt forráskódú eszköz, amely szoftverek kiépítését, konfiguráció kezelését és alkalmazás telepítését végzi. Egyszer\H{u} szavakkal, átvesz egy újonnan létrehozott szerverpéldányt, és egy receptkönyv (ún. Playbook) alapján telepíti a szükséges szoftvert. Végül egy teljesen m\H{u}köd\H{o}képes kiszolgálónk van, amely kiszámítható és nyomon követhet\H{o} cs\H{o}vezetékb\H{o}l származik.\\
+\newline
+\textbf{Backup készítési eljárás}\\
+\newline
+Milyen gyakran érdemes backup-ot készíteni?\\
+\newline
+Ez üzleti döntés lehet (pl.: Milyen gyakran és milyen fontosságú tartalmak vannak benne.) Itt lehet pl: napi vagy x id\H{o}nkénti teljes mentés vagy tranzakció alapú mentése is a db-nek.
+\newline
+A backup-ok nem szükségesek az alkalmazás futtatásához. Ezek megvalósítása id\H{o}be és er\H{o}forrásokba kerül. És akárcsak az egység tesztjei, a vezet\H{o}ség talán soha nem fogja látni \H{o}ket.
+De ahogy az egységtesztek is nagyon hasznosak a refaktorálás céljából, a biztonsági mentések is nélkülözhetetlenek, ha valami rossz történik a termelési adatokkal.
+A biztonsági mentési parancsfájlokat "configuration as code" kezeljük.\\
+\newline
+\textbf{Istio} [14]\\
+\newline
+Az Istio lehet\H{o}vé teszi a szolgáltatások csatlakoztatását, biztonságát, ellen\H{o}rzését és megfigyelését. Magas szinten az Istio segít csökkenteni ezen telepítések bonyolultságát, és megkönnyíti a fejleszt\H{o}i csapatok megterhelését. Ez egy teljesen nyílt forráskódú szolgáltatásháló, amely átláthatóan rétegezi a meglév\H{o} elosztott alkalmazásokat. Ez egy platform, beleértve az API-kat is, amelyek integrálódnak bármely naplózási platformba, telemetriába vagy házirendbe. Az Istio változatos szolgáltatáskészlete lehet\H{o}vé teszi, hogy sikeresen és hatékonyan futtasson egy elosztott mikroszolgáltatási architektúrát, és egységes módon biztosítsa, csatlakoztassa és felügyelje a mikroszolgáltatásokat.\\
+\newline
+Miért érdemes használni az Istio-t?\\
+\newline
+Az Istio megkönnyíti a telepített szolgáltatások hálózatának létrehozását terheléselosztással, szolgáltatás-szolgáltatás hitelesítéssel, figyelemmel kíséréssel és egyebekkel, kevés vagy egyáltalán nem változtat kódot a szolgáltatási kódban.  
+Automatikus terheléselosztás a HTTP, gRPC, WebSocket és TCP forgalom számára. 
+Automatikus mér\H{o}számok, naplók és nyomkövetések a fürtön belüli összes forgalomra, beleértve a fürt behatolását és kilépését is.
+Az Istio-t a b\H{o}víthet\H{o}ségre tervezték, és kielégíti a különféle telepítési igényeket.\\
+\newline
+Alapvet\H{o} jellemz\H{o}k\\
+\newline
+Az Istio számos kulcsfontosságú képességet kínál egységesen a szolgáltatások hálózatában:\\
+\newline
+Forgalomszervezés\\
+\newline
+Az Istio egyszer\H{u} szabálykonfigurálása és forgalomirányítása lehet\H{o}vé teszi a szolgáltatások közötti forgalom és API-hívások áramlásának vezérlését. Az Istio leegyszer\H{u}síti a szolgáltatási szint\H{u} tulajdonságok, például a megszakítók, az id\H{o}túllépések és az újrapróbálkozások konfigurálását, és szell\H{o}sebbé teszi olyan fontos feladatok beállítását, mint az A / B tesztelés, a kanári bevezetések és a fokozatos, a százalékos forgalom felosztásával történ\H{o} bevezetések.\\
+\newline
+Biztonság\\
+\newline
+Az Istio biztonsági képességei szabadon fejlesztik a biztonságot az alkalmazás szintjén. Az Istio biztosítja a mögöttes biztonságos kommunikációs csatornát, és nagymértékben kezeli a hitelesítést, az engedélyezést és a szolgáltatási kommunikáció titkosítását.  \\
+\newline
+Megfigyelhet\H{o}ség\\
+\newline
+Az Istio robusztus nyomkövetési, megfigyelési és naplózási szolgáltatásai mély betekintést nyújtanak a szervízháló telepítésébe. Az Istio felügyeleti funkcióival gyorsan és hatékonyan észlelhetjük és megoldhatjuk a problémákat.\\
+\newline
+Platform támogatás\\
+\newline
+Az Istio platformfüggetlen, és különféle környezetekben való futtatásra készült, ideértve a Cloud, on-premise, Kubernetes, Mesos stb. Telepítheti az Istio-t a Kubernetesre vagy a Nomad-ra a Consul segítségével. \\
+\newline
+Minden microservice mögé egy reverse proxy kerül, ami a jelszavas védelmet nyújtja a microservicenek. Ennek segítségével lehet garantálni, hogy illetéktelen ne férjen hozzá akkor se, ha betört a rendszerbe.\\
+\newline
+\textbf{Mi a biztonsági mentés?}\\
+\newline
+A biztonsági mentés a kód vagy az adatok más helyre történ\H{o} mentésének folyamata, mint ahol a kódot vagy adatokat általában tárolják. Ez a folyamat különböz\H{o} stratégiák alkalmazásával végezhet\H{o}, de mindegyiknek ugyanaz a célja - nem veszíteni el az adatokat annak érdekében, hogy a jöv\H{o}ben is hozzáférhessenek hozzájuk.\\
+\newline
+\textbf{Miért fontos?}\\
+\newline
+A biztonsági mentés két okból is elvégezhet\H{o}. Az els\H{o} az adatok elvesztése egy hack támadás, sérült adatok vagy bármilyen probléma esetén, amelyek lekérdezéseket hajtanak végre a termelési kiszolgálón. Ez a biztonsági másolat segít az elveszett vagy sérült adatok helyreállításában.
+
+

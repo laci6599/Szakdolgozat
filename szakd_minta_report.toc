@@ -3,12 +3,12 @@
 \select@language {magyar} \contentsline {section}{\numberline {1.2}Motiv\'aci\'o}{6}{}%
 \select@language {magyar} \contentsline {chapter}{\numberline {2}CMS-ek \'altal\'anos ismertet\'ese}{8}{}%
 \select@language {magyar} \contentsline {section}{\numberline {2.1}CMS defin\IeC {\'\i }ci\'o}{8}{}%
-\select@language {magyar} \contentsline {section}{\numberline {2.2}Mikor hasszn\'aljunk tartalomkezel\H {o} rendszert?}{9}{}%
+\select@language {magyar} \contentsline {section}{\numberline {2.2}Mikor haszn\'aljunk tartalomkezel\H {o} rendszert?}{9}{}%
 \select@language {magyar} \contentsline {section}{\numberline {2.3}CMS felhaszn\'al\'okezel\'es}{9}{}%
 \select@language {magyar} \contentsline {section}{\numberline {2.4}CMS v\'alaszt\'as}{9}{}%
 \select@language {magyar} \contentsline {section}{\numberline {2.5}CMS t\IeC {\'\i }pusok}{10}{}%
 \select@language {magyar} \contentsline {section}{\numberline {2.6}Ny\IeC {\'\i }lt forr\'ask\'od\'u, vagy egyedi feljeszt\'es? CMS?}{12}{}%
-\select@language {magyar} \contentsline {section}{\numberline {2.7}Java alap\'u CMS-ek}{14}{}%
+\select@language {magyar} \contentsline {section}{\numberline {2.7}Java alap\'u CMS-ek}{13}{}%
 \select@language {magyar} \contentsline {subsection}{\numberline {2.7.1}Hozz\'atartoz\'o defin\IeC {\'\i }ci\'ok}{14}{}%
 \select@language {magyar} \contentsline {subsection}{\numberline {2.7.2}Ny\IeC {\'\i }lt forr\'ask\'od\'u Java port\'alok}{14}{}%
 \select@language {magyar} \contentsline {subsection}{\numberline {2.7.3}A Liferay bemutat\'asa}{15}{}%
@@ -17,5 +17,10 @@
 \select@language {magyar} \contentsline {section}{\numberline {3.1}Koncepci\'o}{17}{}%
 \select@language {magyar} \contentsline {section}{\numberline {3.2}A Microservicekr\H {o}l \'altal\'aban}{18}{}%
 \select@language {magyar} \contentsline {section}{\numberline {3.3}Programspecifik\'aci\'o}{19}{}%
-\select@language {magyar} \contentsline {chapter}{\numberline {4}\"Osszefoglal\'as}{22}{}%
-\select@language {magyar} \contentsline {chapter}{Adathordoz\'o haszn\'alati \'utmutat\'o}{24}{}%
+\select@language {magyar} \contentsline {section}{\numberline {3.4}Haszn\'alt technol\'ogi\'ak ismertet\'ese}{22}{}%
+\select@language {magyar} \contentsline {subsection}{\numberline {3.4.1}Tranzakci\'o kezel\'es}{22}{}%
+\select@language {magyar} \contentsline {subsection}{\numberline {3.4.2}Lehets\'eges megold\'asok}{24}{}%
+\select@language {magyar} \contentsline {subsection}{\numberline {3.4.3}Napl\'oz\'as, logging, K\"ozponti loggy\H {u}jt\H {o}k \"osszehasonl\IeC {\'\i }t\'asa}{25}{}%
+\select@language {magyar} \contentsline {subsection}{\numberline {3.4.4}M\H {u}k\"od\'es stabilit\'as\'at karbantart\'as\'at seg\IeC {\'\i }t\H {o} r\'eszek, hibakezel\'es}{28}{}%
+\select@language {magyar} \contentsline {chapter}{\numberline {4}\"Osszefoglal\'as}{36}{}%
+\select@language {magyar} \contentsline {chapter}{Adathordoz\'o haszn\'alati \'utmutat\'o}{38}{}%
