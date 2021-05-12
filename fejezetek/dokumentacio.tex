@@ -51,7 +51,7 @@ További el\H{o}nye, hogy nem vagyunk rákényszerítve az egész rendszeren belül eg
 \newline
 \textbf{\underline{Content modul}} \\
 \newline
-Ennek a cms modulnak a feladata tárolni és kezelni a különböz\H{o} tartalmakat. Ebbe beleérthet\H{o}ek statikus tartalmak, amelyek például egy portál nyitó oldala vagy akár egy cikk szerkeszt? is, amely komplexebb dinamikus tartalmakat is tartalmazhat. Cél, hogy verziózni lehessen a tartalmat, több állapotot is tudjon kezelni (pl.: production, staging). \\
+Ennek a cms modulnak a feladata tárolni és kezelni a különböz\H{o} tartalmakat. Ebbe beleérthet\H{o}ek statikus tartalmak, amelyek például egy portál nyitó oldala vagy akár egy cikk szerkeszt\H{o} is, amely komplexebb dinamikus tartalmakat is tartalmazhat. Cél, hogy verziózni lehessen a tartalmat, több állapotot is tudjon kezelni (pl.: production, staging). \\
 \newline
 \textbf{Microservicek} \\
 \newline
@@ -59,7 +59,7 @@ Ennek a cms modulnak a feladata tárolni és kezelni a különböz\H{o} tartalmakat. 
 \newline
 Ez a service adja a modul egyik API-ját. Ezen keresztül érhet\H{o}ek el a tartalmak. Mind a generált, mind a statikus tartalmak. A tartalom hozzáadása, módosítása is ezen keresztül történik. Feladat az ábra szerint is, a modulhoz tartozó további servicek közötti közvetítés. \\
 \newline
-Els\H{o} lépésként, megnézni, hogy az adott azonosítóhoz milyen alap adatok tartoznak, ami alapján validációkat, illetve a válasz modell alapján létre lehet hozni. Azonban a microservicek el\H{o}nyét kihasználva, ezzel párhuzamosan kiküldésre kerül a tartalom felé is a kérés, hogy az adott azonosítóhoz határozza meg a kívánt tartalmat. Ezek megérkezése után, megvizsgálásra kerül, hogy statikus tartalomként azonnal kiszolgálható-e a válasz, vagy dinamikusként template service felé irányítandó a feldolgozás további folyamata. A template enginek válasza után pedig a végs? modell összeállása utána megkapjuk a teljes választ. \\
+Els\H{o} lépésként, megnézni, hogy az adott azonosítóhoz milyen alap adatok tartoznak, ami alapján validációkat, illetve a válasz modell alapján létre lehet hozni. Azonban a microservicek el\H{o}nyét kihasználva, ezzel párhuzamosan kiküldésre kerül a tartalom felé is a kérés, hogy az adott azonosítóhoz határozza meg a kívánt tartalmat. Ezek megérkezése után, megvizsgálásra kerül, hogy statikus tartalomként azonnal kiszolgálható-e a válasz, vagy dinamikusként template service felé irányítandó a feldolgozás további folyamata. A template enginek válasza után pedig a végs\H{o}modell összeállása utána megkapjuk a teljes választ. \\
 \newline
 \textbf{\underline{Content base data}} \\
 \newline
@@ -129,7 +129,7 @@ A fenti példában, ha a User küld egy Put Order action-t a monolitikus rendszerne
 \begin{itemize}
 	\item \textbf{Atomic} - Lényegében egy atomi tranzakció biztosítja, hogy minden commit sikeresen befejezze az egész m\H{u}veletet. Vagy, ha a m\H{u}velet közepén megszakadt a kapcsolat, az adatbázis visszaáll a m\H{u}velet végrehajtásának megkezdése el\H{o}tti állapotába. Ez fontos, hogy megakadályozzuk az összeomlásokat és a kieséseket, amelyek olyan eseteket hoznak létre, amikor a tranzakció csak részben, egy ismeretlen állapotig fejez\H{o}dik be.
 	\item \textbf{Consistent} - A következetesség az adatintegritási korlátok fenntartására utal. A következetesség betartatása biztosítja, hogy ha egy adatbázis illegális állapotba kerül (ha az adatintegritási korlátok megsértése történik), akkor a folyamat megszakad, és a változások visszakerülnek korábbi, legális állapotukba.
-	\item \textbf{Isolated} - Garantálja, hogy minden tranzakció külön-külön történjen. Egyetlen tranzakciót sem érint más tranzakció. Tehát egy tranzakció nem képes beolvasni egyetlen olyan tranzakció adatait sem, amely még nem fejez?dött be.
+	\item \textbf{Isolated} - Garantálja, hogy minden tranzakció külön-külön történjen. Egyetlen tranzakciót sem érint más tranzakció. Tehát egy tranzakció nem képes beolvasni egyetlen olyan tranzakció adatait sem, amely még nem fejez\H{o}dött be.
 	\item \textbf{Durable} - A tartósság biztosítja, hogy az adatbázisban végrehajtott tranzakciók rendszerhibák esetén is végleg fennmaradjanak. Ez biztosítja, hogy az adatbázisban lév\H{o} adatokat ne sértsék meg:
 	\begin{itemize}
 		\item Szolgáltatási kiesések 
@@ -158,7 +158,7 @@ Az el\H{o}készít\H{o} fázisban a microserviceket tulajdonképpen felkészítik arra
 \newline
 Egyik legnagyobb el\H{o}nye, hogy garantálja, hogy a tranzakció atomi. Emellett, lehet\H{o}vé teszi az írás és az olvasás szétválasztását. Ez azt jelenti, hogy csak akkor láthatóak a mez\H{o} változásai, ha a Coordinator elvégezte a módosításokat.
 \newline
-A hátrányai közé tartozik, hogy a 2pc blokkoló. Ez pedig azt jelenti, hogy a módosítani kívánt dokumentumot a protokoll lezárja, még miel?tt a tranzakció befejez\H{o}dne, ami viszont megakadályozza, hogy az ügyfél új megrendeléseket hajtson végre. Így pedig lehetséges, hogy két tranzakció kölcsönösen lezárja egymást és holtpont jöhet létre.\\
+A hátrányai közé tartozik, hogy a 2pc blokkoló. Ez pedig azt jelenti, hogy a módosítani kívánt dokumentumot a protokoll lezárja, még miel\H{o}tt a tranzakció befejez\H{o}dne, ami viszont megakadályozza, hogy az ügyfél új megrendeléseket hajtson végre. Így pedig lehetséges, hogy két tranzakció kölcsönösen lezárja egymást és holtpont jöhet létre.\\
 \newline
 \textbf{Saga pattern}\\
 \newline
@@ -182,7 +182,7 @@ Ha egy mikroszolgáltatás nem fejezi be a helyi tranzakciót, akkor a többi mikros
 \newline
 Mire jó a logolás?\\
 \newline
-A logolás, naplózás segít abban, mind magunknak, mind a többi fejleszt?nek és egyaránt a felhasználóknak is, hogy nagyobb betekintést kapjunk arra, hogy mi is történik az alkalmazáson belül, ez pedig megkönnyíti a tevékenységek felügyeletét és a problémák felkeresését. Így az alkalmazás biztonságát tudjuk garantálni, csökkenteni tudjuk az összeomlásokat. Ezeket a naplókat viszont nehéz kezelni és nyomon követni, ebben segítségünkre lehetnek a nyílt forráskódú naplókezel\H{o}k. A továbbiakban ezek közül a három legismertebbet fogom ismertetni és összehasonlítani, ezek pedig a Logstash, Syslog-ng és a Fluentd.\\
+A logolás, naplózás segít abban, mind magunknak, mind a többi fejleszt\H{o}nek és egyaránt a felhasználóknak is, hogy nagyobb betekintést kapjunk arra, hogy mi is történik az alkalmazáson belül, ez pedig megkönnyíti a tevékenységek felügyeletét és a problémák felkeresését. Így az alkalmazás biztonságát tudjuk garantálni, csökkenteni tudjuk az összeomlásokat. Ezeket a naplókat viszont nehéz kezelni és nyomon követni, ebben segítségünkre lehetnek a nyílt forráskódú naplókezel\H{o}k. A továbbiakban ezek közül a három legismertebbet fogom ismertetni és összehasonlítani, ezek pedig a Logstash, Syslog-ng és a Fluentd.\\
 \newline
 \textbf{Logstash}\\
 \newline
